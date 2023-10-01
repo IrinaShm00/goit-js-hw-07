@@ -14,17 +14,21 @@ function createMarkup(arr) {
     `)
     .join('');
 }
-// console.log(galleryItems);
+
 
 function handleClick(event) {
     console.log(event)
-    event.preventDefault();
+   
+    if (event.target.nodeName !== 'IMG') {
+        return;
+    } 
 
-if (event.target.classList.contains('gallery__image')) {
     const gallery = new SimpleLightbox('.gallery a', {
-        captions: true, //показує підписи для img 
-        captionDelay: 250, //adds a delay before the caption shows (in ms)
+        captions: true,
+        captionDelay: 250,
         captionsData: 'alt',
     });
-  }
+ 
 }
+
+
