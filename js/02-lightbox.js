@@ -1,7 +1,7 @@
+
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 const gallery = document.querySelector('.gallery');
-gallery.addEventListener("click", handleClick);
 
 function createMarkup(arr) {
   return arr
@@ -15,20 +15,11 @@ function createMarkup(arr) {
     .join('');
 }
 
+const markup = createMarkup(galleryItems);
+gallery.insertAdjacentHTML('beforeend', markup); //додаємо в ul 
 
-function handleClick(event) {
-    console.log(event)
-   
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    } 
-
-    const gallery = new SimpleLightbox('.gallery a', {
-        captions: true,
-        captionDelay: 250,
-        captionsData: 'alt',
-    });
- 
-}
-
-
+const lightbox = new SimpleLightbox('.gallery a', { //змінила назву !
+  captions: true,
+  captionDelay: 250,
+  captionsData: 'alt'
+});
