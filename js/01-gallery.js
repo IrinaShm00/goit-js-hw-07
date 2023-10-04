@@ -20,13 +20,18 @@ function handleClick(event) {
     console.log(event)
     event.preventDefault();
 
-if (typeof event.target.dataset.source === "undefined") {
-    alert("Ooops look like data set is missed!");
-    return;
-}
-
+    if (event.target.nodeName !=='IMG') {
+        return;
+    }
+    
 const instance = basicLightbox.create(`<div class="modal">
 <img class="gallery_item" src="${event.target.dataset.source}"/>
 </div>`)
-instance.show()
+    instance.show()
+
+    instance.element().addEventListener('click', () => { //модал-обєкт-метод
+    instance.close();
+      });
 }
+
+
